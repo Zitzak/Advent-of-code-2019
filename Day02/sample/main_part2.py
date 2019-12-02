@@ -7,6 +7,7 @@ def get_input_list_ints():
 	input_list = f.readline()
 	input_list = list(input_list.split(","))
 	input_list = [int(i) for i in input_list]
+	f.close()
 	return input_list
 
 
