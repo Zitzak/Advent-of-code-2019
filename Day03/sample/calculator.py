@@ -6,7 +6,7 @@ class Calculator:
 		self.cartesian_points_list1 = [[0, 0]]
 		self.cartesian_points_list2 = [[0, 0]]
 		self.crossing_points_list = []
-		self.crossing_points_in_steps_list = []
+		self.crossing_points_in_steps = 0
 		self.lowest_manhattan_distance = 0
 	
 	def update_init(self, list1, list2):
@@ -73,14 +73,20 @@ class Calculator:
 
 	def find_crossing_point_in_steps(self):
 
+		temp_list = []
 		for elem in self.crossing_points_list:
-			# print(elem)
-			sum = 0
+			sum1 = 0
+			sum2 = 0
 			for elem1 in self.cartesian_points_list2:
-				sum += 1
+				sum1 += 1
 				if elem == elem1:
-					self.crossing_points_in_steps_list.append(sum * 2)
 					break
+			for elem2 in self.cartesian_points_list1:
+				sum2 += 1
+				if elem == elem2:
+					break
+			temp_list.append(sum1 + sum2)
+		self.crossing_points_in_steps = min(temp_list)
 
 	def convert_negative_to_positve(self):
 
@@ -118,4 +124,4 @@ class Calculator:
 		self.find_crossing_points()
 		# print(self.crossing_points_list)
 		self.find_crossing_point_in_steps()
-		print(self.crossing_points_in_steps_list)
+		print(self.crossing_points_in_steps)

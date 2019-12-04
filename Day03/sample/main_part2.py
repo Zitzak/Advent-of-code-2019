@@ -35,6 +35,10 @@ def unit_test(test_list):
 
 if __name__ == '__main__':
 
+	# input_parser = GetInputFiles()
 	unit_test = UnitTest()
 	# unit_test.run_tests_part1()
 	unit_test.run_tests_part2()
+	# input_parser.get_input()
+	
+	# calc = Calculator()

@@ -25,7 +25,7 @@ class UnitTest:
 		for elem in range(len(self.test_cases)):
 			self.calc.update_init(self.test_cases[elem][0], self.test_cases[elem][1])
 			self.calc.run_part2()
-			if self.calc.crossing_points_in_steps_list[0] == self.test_sollutions_part2[elem]:
+			if self.calc.crossing_points_in_steps == self.test_sollutions_part2[elem]:
 				print("Test %i correct\n" % (elem + 1))
 			else:
 				print("Test %i failed\n" % (elem + 1))
