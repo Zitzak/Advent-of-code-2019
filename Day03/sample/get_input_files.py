@@ -3,9 +3,9 @@ class GetInputFiles:
 	def __init__(self):
 		self.test1 = "../tests/test.txt"
 		self.test2 = "../tests/test1.txt"
-		self.test3 = "../input/day3_input.txt"
+		self.test3 = "../tests/test2.txt"
 		self.test_cases_path = [self.test1, self.test2, self.test3]
-		self.day03_input = ["../input/day3_input.txt"]
+		self.day03_input = "../input/day3_input.txt"
 
 	def get_input_from_file(self, paths):
 		path_list = []
@@ -32,7 +32,9 @@ class GetInputFiles:
 
 	def get_input(self):
 		# test = [self.day03_input]
-		path_read = self.get_input_from_file(self.day03_input)
-		# print(path_read)
+		f = open(self.day03_input, "r")
+		input_file = f.readlines()
+		# path_read = self.get_input_from_file(self.day03_input)
+		# print(input_file)
 		
-		print(self.create_list(path_read))
+		return(self.create_list(input_file))

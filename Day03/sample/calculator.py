@@ -110,18 +110,15 @@ class Calculator:
 
 		self.convert_list_to_cartesian_points(self.list1, self.cartesian_points_list1)
 		self.convert_list_to_cartesian_points(self.list2, self.cartesian_points_list2)
-		# print(self.cartesian_points_list1, "\n", self.cartesian_points_list2)
 		self.find_crossing_points()
 		self.convert_negative_to_positve()
 		self.calc_lowest_manhattan_distance()
-		# print(self.crossing_points_list)
+		print(self.lowest_manhattan_distance)
 
 	def run_part2(self):
 
 		self.convert_list_to_cartesian_points(self.list1, self.cartesian_points_list1)
 		self.convert_list_to_cartesian_points(self.list2, self.cartesian_points_list2)
-		# print(self.cartesian_points_list1, "\n", self.cartesian_points_list2)
 		self.find_crossing_points()
-		# print(self.crossing_points_list)
 		self.find_crossing_point_in_steps()
 		print(self.crossing_points_in_steps)

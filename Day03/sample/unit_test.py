@@ -16,7 +16,7 @@ class UnitTest:
 			self.calc.update_init(self.test_cases[elem][0], self.test_cases[elem][1])
 			self.calc.run_part1()
 			if self.calc.lowest_manhattan_distance == self.test_sollutions_part1[elem]:
-				print("Test %i correct\n" % (elem + 1))
+				print("Test %i correct - %i\n" % ((elem + 1),self.test_sollutions_part1[elem]))
 			else:
 				print("Test %i failed\n" % (elem + 1))
 
@@ -26,6 +26,6 @@ class UnitTest:
 			self.calc.update_init(self.test_cases[elem][0], self.test_cases[elem][1])
 			self.calc.run_part2()
 			if self.calc.crossing_points_in_steps == self.test_sollutions_part2[elem]:
-				print("Test %i correct\n" % (elem + 1))
+				print("Test %i correct - %i\n" % ((elem + 1),self.test_sollutions_part2[elem]))
 			else:
 				print("Test %i failed\n" % (elem + 1))

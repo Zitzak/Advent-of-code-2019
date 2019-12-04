@@ -1,34 +1,14 @@
 from calculator import Calculator
+from get_input_files import GetInputFiles
+from unit_test import UnitTest
 
-def get_input_from_file(path):
-
-	f = open(path, "r")
-	input_file = f.readlines()
-	return input_file
-
-def test_cases(input_file):
-
-
-	list1 = list(input_file[0].split(','))
-	list2 = list(input_file[1].split(','))
-	list1[-1] = list1[-1].strip()
-	calc = Calculator(list1, list2)
-	calc.run()
-	print(calc)
 
 if __name__ == '__main__':
 
-	test = "../tests/test.txt"
-	test1 = "../tests/test1.txt"
-	test2 = "../tests/test2.txt"
-	input_day = "../input/day3_input.txt"
-	input_file = get_input_from_file(input_day)
-	test_cases(input_file)
-	# print(list1[-2])
-	# list2 =  input_file[1]÷
-	# print(list1, lis÷t2)
-	# list_mass = open("../input/day1_input.txt", 'r')
-	# fuel_calculator = CalcFuel(list_mass)
-	# fuel_calculator.run_part1()
-	# list_mass.close()
-	# print(fuel_calculator)
+	# unit_test = UnitTest()
+	# unit_test.run_tests_part1()
+
+	# input_file = GetInputFiles()
+	# input_list = input_file.get_input()
+	# calc = Calculator(input_list[0], input_list[1])
+	# calc.run_part1()
