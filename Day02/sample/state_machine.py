@@ -42,15 +42,15 @@ class StateMachine:
 
 	def between_states(self):
 
-		int1 = self.get_num_from_tape_plus_index()
-		self.index += 1
-		int2 = self.get_num_from_tape_plus_index()
-		self.index += 1
-		sum = self.calculate(int1, int2)
-		self.put_sum_in_tape(sum)
-		self.index += 1
-		self.get_next_state()
-		self.index += 1
+        self.index += 1
+        int1 = self.get_num_from_tape_plus_index()
+        self.index += 1
+        int2 = self.get_num_from_tape_plus_index()
+        self.index += 1
+        sum = self.calculate(int1, int2)
+        self.put_sum_in_tape(sum)
+        self.index += 1
+        self.get_next_state()
 
 	def run(self):
 		while self.current_state is not self.final_state:
