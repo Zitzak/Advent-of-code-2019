@@ -35,7 +35,6 @@ class StateMachine:
 		if self.current_state[0] == "0":
 			self.current_state = self.current_state[1]
 		self.current_state = int(self.current_state)
-		# print("state - ", self.current_state)
 	
 	def get_num_from_tape_plus_index(self, temp_index):
 
@@ -53,9 +52,9 @@ class StateMachine:
 			return int1 * int2
 	
 	def put_sum_in_tape(self, sum):
-		# print("4", self.tape[self.index])
 
 		self.tape[self.tape[self.index]] = sum
+
 
 	def get_parameters_instructions(self):
 
@@ -68,83 +67,74 @@ class StateMachine:
 			temp_string = "00"
 		self.parameters_intstructions = temp_string
 
-	def index_plus_1(self):
+	def index_plus_1(self, num):
 
-		self.index += 1
+		self.index += num
 	
 	def multi_or_plus_state_processing(self):
 
 		int1 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		int2 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-2:-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		sum = self.calculate(int1, int2)
 		self.put_sum_in_tape(sum)
-		self.index_plus_1()
-		# self.get_next_state()
+		self.index_plus_1(1)
 
 	def input_state_processing(self):
 
-		# print("test1", self.index)
 		self.put_sum_in_tape(self.user_input)
-		self.index_plus_1()
-		self.get_next_state()
+		self.index_plus_1(1)
 
 	def output_state_processing(self):
 		
-		# print("test2", self.index)
-		print(self.get_num_from_tape_plus_index(0))
-		self.index_plus_1()
-		self.get_next_state()
+		print(self.get_num_from_tape_plus_index(self.parameters_intstructions[-1]))
+		self.index_plus_1(1)
 
 	def jump_if_true_state_processing(self):
 
-		# print("test3", self.index)
 		if self.get_num_from_tape_plus_index(self.parameters_intstructions[-1]) != 0:
-			self.index_plus_1()
+			self.index_plus_1(1)
 			self.index = self.get_num_from_tape_plus_index(self.parameters_intstructions[-2:-1])
+		else:
+			self.index_plus_1(2)
+
 	
 	def jump_if_false_state_processing(self):
 
-		# print("test4", self.index)
 		if self.get_num_from_tape_plus_index(self.parameters_intstructions[-1]) == 0:
-			self.index_plus_1()
+			self.index_plus_1(1)
 			self.index = self.get_num_from_tape_plus_index(self.parameters_intstructions[-2:-1])
+		else:
+			self.index_plus_1(2)
+
 
 	def less_the_state_processing(self):
-		# print("test5", self.index)
 		int1 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		int2 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-2:-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		if int1 < int2:
 			self.put_sum_in_tape(1)
 		else:
 			self.put_sum_in_tape(0)
-		self.index_plus_1()
+		self.index_plus_1(1)
 
 	def equals_state_processing(self):
 
-		# print("test6", self.index)
-		# print(self.tape)
 		int1 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		int2 = self.get_num_from_tape_plus_index(self.parameters_intstructions[-2:-1])
-		self.index_plus_1()
+		self.index_plus_1(1)
 		if int1 == int2:
 			self.put_sum_in_tape(1)
 		else:
 			self.put_sum_in_tape(0)
-		self.index_plus_1()
-
-
-
-
+		self.index_plus_1(1)
 
 	def do_operation(self):
 
 		if self.current_state == self.multi_state or self.current_state == self.plus_state:
-			# print("test")
 			self.multi_or_plus_state_processing()
 		elif self.current_state == self.input_state:
 			self.input_state_processing()
@@ -162,15 +152,9 @@ class StateMachine:
 	def run(self):
 		print("Fill in the user ID:")
 		self.user_input = int(input())
-		# print(self.user_input)
 
 		while self.current_state is not self.final_state:
-			# print("1", self.index)
-			# print(self.tape)
 			self.get_parameters_instructions()
-			# print("2", self.index)
-			self.index_plus_1()
-			# print("3", self.index)
+			self.index_plus_1(1)
 			self.do_operation()
 			self.get_next_state()
-
